@@ -1,0 +1,15 @@
+{
+  "name": "desafio_numero_extenso",
+  "version": "1.0.0",
+  "description": "Criando server com Express",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Artur Alves",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
