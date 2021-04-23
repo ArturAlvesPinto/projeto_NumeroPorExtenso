@@ -34,22 +34,33 @@ server.get('/',(req,res) => {
 
     res.send(`
    
-    <h1>Digite o Numero de Requisicao</h1>
+    <h1>Aplicacao retorna número por extenso</h1>
+
+    <h3>Insira o número abaixo ou adicione ao link do seu Navegador '/numero/{seu-numero}'</h3>
 
     <form action="/" method="GET"
         <label for="numero">Numero:<label>
-        <input type="numero" name="numero" id="numero">
-        <input type="submit" value="Enviar...">
+        <input type="search" placeholder="number" id="numero">
+        <input type="button" value="Enviar..." onclick="redirecionaNumero()">
     </form>
+    <script type="text/javascript">
+        function redirecionaNumero(){
+        console.log("chegou ate aqui")
+        var numero = document.getElementById("numero").value;
+        window.location.href = "http://localhost:3001/numero/" + numero
+    }
+    </script>
+
     `)
 })
 
-server.get('/numero-:numero',(req,res) => {    //passando um variável pelo req. Variável 'numero'. Use ":" e digite o nome da variavel
+server.get('/numero/:numero',(req,res) => {    //passando um variável pelo req. Variável 'numero'. Use ":" e digite o nome da variavel
 
 //`<script type="text/javascript" src="extenso.js"></script>`;
     console.log(req.params.numero);
     let escrita = extenso.extenso(req.params.numero);
-    res.send(`<h1>O número digitado é: </h1><h2>`+ req.params.numero + "  =  " + escrita + "</h2>")
+    res.send(`<h1>Resultado da busca</h1><br><h3>Número: `+ req.params.numero + `</h3>
+            <h3>Nome: `+ escrita +`</h3> `)
 })
 
 /*server.post('/',(req,res) => {
